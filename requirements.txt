@@ -1,0 +1,24 @@
+# Core
+python-nmap>=0.7.1
+shodan>=1.29.0
+
+# Vulnerability Scanning
+# nuclei — installed separately via `go install`
+# subfinder — installed separately via `go install`
+
+# AI Analysis
+openai>=1.6.0
+httpx>=0.25.0
+
+# Reporting
+markdown>=3.5.0
+weasyprint>=60.0
+
+# MCP Integration
+mcp>=0.1.0
+
+# Utilities
+python-dotenv>=1.0.0
+rich>=13.7.0
+python-whois>=0.9.1
+dnspython>=2.4.0
