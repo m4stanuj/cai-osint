@@ -3,9 +3,11 @@
 # 🛡️ CAI-OSINT — Autonomous Cyber Reconnaissance Framework
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![Security](https://img.shields.io/badge/Security-Offensive-FF0055?style=flat-square)]()
-[![CEH](https://img.shields.io/badge/CEH-Aligned-red?style=flat-square)]()
+[![CI](https://github.com/m4stanuj/cai-osint/actions/workflows/ci.yml/badge.svg)](https://github.com/m4stanuj/cai-osint/actions)
+[![Release](https://img.shields.io/github/v/release/m4stanuj/cai-osint?style=flat-square&color=FF0055)](https://github.com/m4stanuj/cai-osint/releases)
+[![Stars](https://img.shields.io/github/stars/m4stanuj/cai-osint?style=flat-square&color=yellow)](https://github.com/m4stanuj/cai-osint/stargazers)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![CEH](https://img.shields.io/badge/CEH-Aligned-red?style=flat-square)]()
 
 **An AI-driven OSINT and penetration testing automation framework. From target to report — fully autonomous.**
 
