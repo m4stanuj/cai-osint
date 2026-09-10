@@ -37,16 +37,29 @@ def run_demo(target: str = "scanme.nmap.org"):
     else:
         print(f"      ⚠ No SSL/TLS detected on port 443.")
 
-    print(f"\n\x1b[33m[3/4] 📡 Scanning Exposed Perimeter Services & Ports...\x1b[0m")
+    print(f"\n\x1b[33m[3/5] 📡 Scanning Exposed Perimeter Services & Ports...\x1b[0m")
     time.sleep(0.5)
     # Quick probe on standard audit ports
     open_ports = engine.probe_services(target, ports=[21, 22, 25, 80, 443, 3306, 8080])
     for p in open_ports:
         print(f"      ✔ Open Port \x1b[32m{p['port']}\x1b[0m ({p['service']}) -> {p['banner']}")
 
-    print(f"\n\x1b[33m[4/4] 🧠 Synthesizing Posture & Generating Executive Audit Report...\x1b[0m")
+    print(f"\n\x1b[33m[4/5] 🔒 Analyzing HTTP Security Headers...\x1b[0m")
+    time.sleep(0.3)
+    headers_data = engine.check_security_headers(target)
+    if headers_data.get("checked"):
+        present = headers_data.get("present", {})
+        missing = headers_data.get("missing", [])
+        for label in present:
+            print(f"      ✔ {label}: Present")
+        for label in missing:
+            print(f"      ⚠ {label}: \x1b[33mMissing\x1b[0m")
+    else:
+        print(f"      ⚠ Could not check security headers.")
+
+    print(f"\n\x1b[33m[5/5] 🧠 Synthesizing Posture & Generating Executive Audit Report...\x1b[0m")
     time.sleep(0.5)
-    posture = engine.evaluate_posture(target, dns_data, ssl_data, open_ports)
+    posture = engine.evaluate_posture(target, dns_data, ssl_data, open_ports, headers_data)
 
     report_path = os.path.join(os.path.dirname(__file__), "reports", f"audit_{target.replace('.', '_')}.md")
     generate_markdown_report(posture, report_path)

@@ -53,7 +53,8 @@ def run_full_autonomous_audit(target: str) -> str:
     dns_res = engine.resolve_dns_and_host(clean_target)
     ssl_res = engine.inspect_ssl_tls(clean_target)
     services = engine.probe_services(clean_target)
-    posture = engine.evaluate_posture(clean_target, dns_res, ssl_res, services)
+    headers_res = engine.check_security_headers(clean_target)
+    posture = engine.evaluate_posture(clean_target, dns_res, ssl_res, services, headers_res)
 
     # Generate Markdown report
     report_file = os.path.join(os.path.dirname(__file__), "reports", f"audit_{clean_target.replace('.', '_')}.md")
